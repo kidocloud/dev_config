@@ -49,7 +49,7 @@ hystrix:
 User-service:
   ribbon:
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    listOfServers: http://localhost:33001,http://localhost:33002,http://61.28.226.134:33003
+    listOfServers: http://localhost:33001,http://localhost:33002
     ConnectTimeout: 5000
     ReadTimeout: 5000
     MaxTotalHttpConnections: 500
