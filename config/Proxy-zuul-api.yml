@@ -1,0 +1,74 @@
+server:
+  port: 10003
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10002/eureka/
+
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  #file: zuul.log
+  file: /var/kido/logs/zuul.log
+              
+zuul:
+  routes:
+    userservice:
+      path: /userservice/**
+      serviceId: User-service
+      stripPrefix: true
+    productservice:
+      path: /productservice/**
+      serviceId: Product-service
+      stripPrefix: true
+    orderservice:
+      path: /orderservice/**
+      serviceId: Order-service
+      stripPrefix: true
+
+hystrix:
+  command:
+    User-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: ...
+    Product-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: ...
+    Order-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: ...
+
+User-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: http://localhost:33001,http://localhost:33002,http://61.28.226.134:33003
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+    
+Product-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: http://localhost:33011,http://localhost:33012
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+    
+Order-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: http://localhost:33021,http://localhost:33022
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
