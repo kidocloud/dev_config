@@ -6,6 +6,12 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:10002/eureka/
 
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+        
 logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
@@ -64,10 +70,11 @@ User-service:
     #ReadTimeout: 10000
     #MaxTotalHttpConnections: 500
     #MaxConnectionsPerHost: 100
-    retryableStatusCodes: 404, 500
-    MaxAutoRetries: 2
-    #MaxAutoRetriesNextServer: 5
-    OkRetryOnConnectionErrors: true
+    maxAutoRetries: 3
+    MaxAutoRetriesNextServer: 3
+    OkToRetryOnAllOperations: true
+    ReadTimeout: 5000
+    ConnectTimeout: 3000
     
 Product-service:
   ribbon:
@@ -77,10 +84,11 @@ Product-service:
 #    ReadTimeout: 10000
 #    MaxTotalHttpConnections: 500
 #    MaxConnectionsPerHost: 100
-    retryableStatusCodes: 404, 500
-    MaxAutoRetries: 2
-    #MaxAutoRetriesNextServer: 5
-    OkRetryOnConnectionErrors: true
+    maxAutoRetries: 3
+    MaxAutoRetriesNextServer: 3
+    OkToRetryOnAllOperations: true
+    ReadTimeout: 5000
+    ConnectTimeout: 3000
     
 Order-service:
   ribbon:
@@ -90,10 +98,11 @@ Order-service:
 #    ReadTimeout: 10000
 #    MaxTotalHttpConnections: 500
 #    MaxConnectionsPerHost: 100
-    retryableStatusCodes: 404, 500
-    MaxAutoRetries: 2
-    #MaxAutoRetriesNextServer: 5
-    OkRetryOnConnectionErrors: true
+    maxAutoRetries: 3
+    MaxAutoRetriesNextServer: 3
+    OkToRetryOnAllOperations: true
+    ReadTimeout: 5000
+    ConnectTimeout: 3000
 
 News-service:
   ribbon:
@@ -103,7 +112,8 @@ News-service:
 #    ReadTimeout: 10000
 #    MaxTotalHttpConnections: 500
 #    MaxConnectionsPerHost: 100
-    retryableStatusCodes: 404, 500
-    MaxAutoRetries: 2
-    #MaxAutoRetriesNextServer: 5
-    OkRetryOnConnectionErrors: true
+    maxAutoRetries: 3
+    MaxAutoRetriesNextServer: 3
+    OkToRetryOnAllOperations: true
+    ReadTimeout: 5000
+    ConnectTimeout: 3000
