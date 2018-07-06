@@ -31,62 +31,79 @@ zuul:
       path: /newsservice/**
       serviceId: News-service
       stripPrefix: true
+  retryable: true
 
-#hystrix:
-#  command:
-#    User-service:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 41000
-#    Product-service:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 41000
-#    Order-service:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 41000
-#    News-service:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 41000
+hystrix:
+  command:
+    User-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+    Product-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+    Order-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+    News-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
 
-#User-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: http://localhost:33001,http://localhost:33002,http://61.28.226.134:33003
-#    ConnectTimeout: 10000
-#    ReadTimeout: 10000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
+User-service:
+  ribbon:
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://localhost:33001,http://localhost:33002,http://61.28.226.134:33003
+    #ConnectTimeout: 10000
+    #ReadTimeout: 10000
+    #MaxTotalHttpConnections: 500
+    #MaxConnectionsPerHost: 100
+    retryableStatusCodes: 404, 500
+    MaxAutoRetries: 2
+    #MaxAutoRetriesNextServer: 5
+    OkRetryOnConnectionErrors: true
     
-#Product-service:
-#  ribbon:
+Product-service:
+  ribbon:
 #    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
 #    listOfServers: http://localhost:33011,http://localhost:33012
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
 #    MaxTotalHttpConnections: 500
 #    MaxConnectionsPerHost: 100
+    retryableStatusCodes: 404, 500
+    MaxAutoRetries: 2
+    #MaxAutoRetriesNextServer: 5
+    OkRetryOnConnectionErrors: true
     
-#Order-service:
-#  ribbon:
+Order-service:
+  ribbon:
 #    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
 #    listOfServers: http://localhost:33021,http://localhost:33022
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
 #    MaxTotalHttpConnections: 500
 #    MaxConnectionsPerHost: 100
+    retryableStatusCodes: 404, 500
+    MaxAutoRetries: 2
+    #MaxAutoRetriesNextServer: 5
+    OkRetryOnConnectionErrors: true
 
-#News-service:
-#  ribbon:
+News-service:
+  ribbon:
 #    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
 #    listOfServers: http://localhost:33031,http://localhost:33032
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
 #    MaxTotalHttpConnections: 500
 #    MaxConnectionsPerHost: 100
+    retryableStatusCodes: 404, 500
+    MaxAutoRetries: 2
+    #MaxAutoRetriesNextServer: 5
+    OkRetryOnConnectionErrors: true
