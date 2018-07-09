@@ -45,22 +45,22 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: 60000
     Product-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: 60000
     Order-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: 60000
     News-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: 60000
 
 User-service:
   ribbon:
@@ -75,6 +75,8 @@ User-service:
     OkToRetryOnAllOperations: true
     ReadTimeout: 5000
     ConnectTimeout: 3000
+    eureka:
+      enabled: true
     
 Product-service:
   ribbon:
@@ -89,7 +91,9 @@ Product-service:
     OkToRetryOnAllOperations: true
     ReadTimeout: 5000
     ConnectTimeout: 3000
-    
+    eureka:
+      enabled: true
+      
 Order-service:
   ribbon:
 #    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
@@ -103,7 +107,9 @@ Order-service:
     OkToRetryOnAllOperations: true
     ReadTimeout: 5000
     ConnectTimeout: 3000
-
+    eureka:
+      enabled: true
+      
 News-service:
   ribbon:
 #    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
@@ -117,3 +123,5 @@ News-service:
     OkToRetryOnAllOperations: true
     ReadTimeout: 5000
     ConnectTimeout: 3000
+    eureka:
+      enabled: true
