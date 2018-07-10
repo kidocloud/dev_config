@@ -67,8 +67,8 @@ hystrix:
 
 User-service:
   ribbon:
-    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    listOfServers: http://localhost:33001,http://localhost:33002,http://61.28.226.134:33003
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://localhost:33001,http://localhost:33002,http://61.28.226.134:33003
     #ConnectTimeout: 10000
     #ReadTimeout: 10000
     MaxTotalHttpConnections: 500
@@ -84,8 +84,8 @@ User-service:
     
 Product-service:
   ribbon:
-    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    listOfServers: http://localhost:33011,http://localhost:33012
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://localhost:33011,http://localhost:33012
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
     MaxTotalHttpConnections: 500
@@ -101,9 +101,9 @@ Product-service:
       
 Order-service:
   ribbon:
-    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    listOfServers: http://localhost:33021,http://localhost:33022
-#    ConnectTimeout: 10000
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://localhost:33021,http://localhost:33022
+#    ConnectTimeout: 10000 
 #    ReadTimeout: 10000
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 250
@@ -118,8 +118,8 @@ Order-service:
       
 News-service:
   ribbon:
-    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    listOfServers: http://localhost:33031,http://localhost:33032
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://localhost:33031,http://localhost:33032
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
     MaxTotalHttpConnections: 500
