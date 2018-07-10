@@ -41,6 +41,7 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
+ 
 
 hystrix:
   command:
@@ -48,22 +49,22 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: ..
+            timeoutInMilliseconds: 2000000
     Product-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: ..
+            timeoutInMilliseconds: 2000000
     Order-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: ..
+            timeoutInMilliseconds: 2000000
     News-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: ..
+            timeoutInMilliseconds: 2000000
 
 User-service:
   ribbon:
