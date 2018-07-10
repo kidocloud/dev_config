@@ -38,6 +38,9 @@ zuul:
       serviceId: News-service
       stripPrefix: true
   retryable: true
+  ribbon:
+    eager-load:
+      enabled: true
 
 hystrix:
   command:
@@ -45,22 +48,22 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: ..
     Product-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: ..
     Order-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: ..
     News-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: ..
 
 User-service:
   ribbon:
@@ -73,8 +76,11 @@ User-service:
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
-    ReadTimeout: 5000
-    ConnectTimeout: 3000
+    ReadTimeout: 20000
+    ConnectTimeout: 20000
+    retryableStatusCodes: 404,502
+    eureka:
+      enabled: true
     
 Product-service:
   ribbon:
@@ -87,9 +93,12 @@ Product-service:
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
-    ReadTimeout: 5000
-    ConnectTimeout: 3000
-    
+    ReadTimeout: 20000
+    ConnectTimeout: 20000
+    retryableStatusCodes: 404,502
+    eureka:
+      enabled: true
+      
 Order-service:
   ribbon:
 #    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
@@ -101,9 +110,12 @@ Order-service:
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
-    ReadTimeout: 5000
-    ConnectTimeout: 3000
-
+    ReadTimeout: 20000
+    ConnectTimeout: 20000
+    retryableStatusCodes: 404,502
+    eureka:
+      enabled: true
+      
 News-service:
   ribbon:
 #    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
@@ -115,5 +127,8 @@ News-service:
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
-    ReadTimeout: 5000
-    ConnectTimeout: 3000
+    ReadTimeout: 20000
+    ConnectTimeout: 20000
+    retryableStatusCodes: 404,502
+    eureka:
+      enabled: true
