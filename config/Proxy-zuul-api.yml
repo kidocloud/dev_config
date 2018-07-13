@@ -41,6 +41,22 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
+  eureka:
+    User-service:
+      semaphore:
+        maxSemaphores: 5000
+  eureka:
+    Product-service:
+      semaphore:
+        maxSemaphores: 5000
+  eureka:
+    Order-service:
+      semaphore:
+        maxSemaphores: 5000
+  eureka:
+    News-service:
+      semaphore:
+        maxSemaphores: 5000
  
 
 hystrix:
@@ -72,8 +88,8 @@ User-service:
     #listOfServers: http://localhost:33001,http://localhost:33002,http://61.28.226.134:33003
     #ConnectTimeout: 10000
     #ReadTimeout: 10000
-    MaxTotalHttpConnections: 500
-    MaxConnectionsPerHost: 250
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
@@ -89,8 +105,8 @@ Product-service:
     #listOfServers: http://localhost:33011,http://localhost:33012
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
-    MaxTotalHttpConnections: 500
-    MaxConnectionsPerHost: 250
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
@@ -106,8 +122,8 @@ Order-service:
     #listOfServers: http://localhost:33021,http://localhost:33022
 #    ConnectTimeout: 10000 
 #    ReadTimeout: 10000
-    MaxTotalHttpConnections: 500
-    MaxConnectionsPerHost: 250
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
@@ -123,8 +139,8 @@ News-service:
     #listOfServers: http://localhost:33031,http://localhost:33032
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
-    MaxTotalHttpConnections: 500
-    MaxConnectionsPerHost: 250
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
