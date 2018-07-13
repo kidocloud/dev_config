@@ -93,7 +93,7 @@ User-service:
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
-    ReadTimeout: 20000
+    ReadTimeout: 120000
     ConnectTimeout: 20000
     retryableStatusCodes: 404,502
     eureka:
@@ -110,7 +110,7 @@ Product-service:
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
-    ReadTimeout: 20000
+    ReadTimeout: 120000
     ConnectTimeout: 20000
     retryableStatusCodes: 404,502
     eureka:
@@ -127,7 +127,7 @@ Order-service:
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
-    ReadTimeout: 20000
+    ReadTimeout: 120000
     ConnectTimeout: 20000
     retryableStatusCodes: 404,502
     eureka:
@@ -144,7 +144,7 @@ News-service:
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
-    ReadTimeout: 20000
+    ReadTimeout: 120000
     ConnectTimeout: 20000
     retryableStatusCodes: 404,502
     eureka:
