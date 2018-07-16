@@ -1,11 +1,11 @@
 server:
   port: 10002
-  ssl:
-    enabled: true
-    key-store: /keystore.jks
-    key-store-password: 123456
-    keyStoreType: JKS
-    skeyAlias: kido
+#  ssl:
+#    enabled: true
+#    key-store: /keystore.jks
+#    key-store-password: 123456
+#    keyStoreType: JKS
+#    skeyAlias: kido
 eureka:
   instance:
     hostname: localhost
@@ -13,4 +13,4 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
