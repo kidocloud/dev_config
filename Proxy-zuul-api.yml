@@ -38,10 +38,12 @@ zuul:
       serviceId: News-service
       stripPrefix: true
   retryable: true
-  ribbonIsolationStrategy:THREAD
+  #ribbonIsolationStrategy:THREAD
   ribbon:
     eager-load:
       enabled: true
+  #semaphore:
+  #  max-semaphores: 5000
   #eureka:
   #  User-service:
   #    semaphore:
@@ -65,23 +67,29 @@ hystrix:
     User-service:
       execution:
         isolation:
+          strategy: THEARD
           thread:
-            timeoutInMilliseconds: 100000
+            timeoutInMilliseconds: 120000
     Product-service:
       execution:
-        isolation:
+        isolation:       
+          strategy: THEARD
           thread:
-            timeoutInMilliseconds: 100000
+            timeoutInMilliseconds: 120000
     Order-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 100000
+          strategy: THEARD
+          thread:
+            timeoutInMilliseconds: 120000
     News-service:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 100000
+          strategy: THEARD
+          thread:
+            timeoutInMilliseconds: 120000
 
 User-service:
   ribbon:
@@ -89,8 +97,8 @@ User-service:
     #listOfServers: http://localhost:33001,http://localhost:33002,http://61.28.226.134:33003
     #ConnectTimeout: 10000
     #ReadTimeout: 10000
-    MaxTotalHttpConnections: 5000
-    MaxConnectionsPerHost: 2500
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
@@ -106,8 +114,8 @@ Product-service:
     #listOfServers: http://localhost:33011,http://localhost:33012
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
-    MaxTotalHttpConnections: 5000
-    MaxConnectionsPerHost: 2500
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
@@ -123,8 +131,8 @@ Order-service:
     #listOfServers: http://localhost:33021,http://localhost:33022
 #    ConnectTimeout: 10000 
 #    ReadTimeout: 10000
-    MaxTotalHttpConnections: 5000
-    MaxConnectionsPerHost: 2500
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
@@ -140,8 +148,8 @@ News-service:
     #listOfServers: http://localhost:33031,http://localhost:33032
 #    ConnectTimeout: 10000
 #    ReadTimeout: 10000
-    MaxTotalHttpConnections: 5000
-    MaxConnectionsPerHost: 2500
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
     maxAutoRetries: 3
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
