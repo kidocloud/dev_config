@@ -30,12 +30,28 @@ zuul:
       serviceId: Product-service
       stripPrefix: true
     orderservice:
-      path: /orderservice/**
+      path: /1-0-1/orderservice/**
       serviceId: Order-service
+      stripPrefix: true
+    orderservice:
+      path: /1-0-2/orderservice/**
+      serviceId: Order-service-1.0.2
       stripPrefix: true
     newsservice:
       path: /newsservice/**
       serviceId: News-service
+      stripPrefix: true
+    eventservice:
+      path: /eventservice/**
+      serviceId: Event-service
+      stripPrefix: true
+    shipperservice:
+      path: /shipperservice/**
+      serviceId: Shipper-service
+      stripPrefix: true
+    searchservice:
+      path: /searchservice/**
+      serviceId: Search-service
       stripPrefix: true
   retryable: true
   #ribbonIsolationStrategy:THREAD
@@ -90,6 +106,27 @@ hystrix:
           strategy: THEARD
           thread:
             timeoutInMilliseconds: 120000
+    Event-service:
+      execution:
+        isolation:
+          thread:
+          strategy: THEARD
+          thread:
+            timeoutInMilliseconds: 120000
+    Shipper-service:
+      execution:
+        isolation:
+          thread:
+          strategy: THEARD
+          thread:
+            timeoutInMilliseconds: 120000
+    Search-service:
+      execution:
+        isolation:
+          thread:
+          strategy: THEARD
+          thread:
+            timeoutInMilliseconds: 120000
 
 User-service:
   ribbon:
@@ -103,7 +140,7 @@ User-service:
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
     ReadTimeout: 120000
-    ConnectTimeout: 20000
+    ConnectTimeout: 10000
     retryableStatusCodes: 404,502
     eureka:
       enabled: true
@@ -120,7 +157,7 @@ Product-service:
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
     ReadTimeout: 120000
-    ConnectTimeout: 20000
+    ConnectTimeout: 10000
     retryableStatusCodes: 404,502
     eureka:
       enabled: true
@@ -137,7 +174,7 @@ Order-service:
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
     ReadTimeout: 120000
-    ConnectTimeout: 20000
+    ConnectTimeout: 10000
     retryableStatusCodes: 404,502
     eureka:
       enabled: true
@@ -154,7 +191,58 @@ News-service:
     MaxAutoRetriesNextServer: 3
     OkToRetryOnAllOperations: true
     ReadTimeout: 120000
-    ConnectTimeout: 20000
+    ConnectTimeout: 10000
+    retryableStatusCodes: 404,502
+    eureka:
+      enabled: true
+      
+Event-service:
+  ribbon:
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://localhost:33031,http://localhost:33032
+#    ConnectTimeout: 10000
+#    ReadTimeout: 10000
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
+    maxAutoRetries: 3
+    MaxAutoRetriesNextServer: 3
+    OkToRetryOnAllOperations: true
+    ReadTimeout: 120000
+    ConnectTimeout: 10000
+    retryableStatusCodes: 404,502
+    eureka:
+      enabled: true
+
+Shipper-service:
+  ribbon:
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://localhost:33031,http://localhost:33032
+#    ConnectTimeout: 10000
+#    ReadTimeout: 10000
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
+    maxAutoRetries: 3
+    MaxAutoRetriesNextServer: 3
+    OkToRetryOnAllOperations: true
+    ReadTimeout: 120000
+    ConnectTimeout: 10000
+    retryableStatusCodes: 404,502
+    eureka:
+      enabled: true
+
+Search-service:
+  ribbon:
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://localhost:33031,http://localhost:33032
+#    ConnectTimeout: 10000
+#    ReadTimeout: 10000
+    MaxTotalHttpConnections: 2000
+    MaxConnectionsPerHost: 1000
+    maxAutoRetries: 3
+    MaxAutoRetriesNextServer: 3
+    OkToRetryOnAllOperations: true
+    ReadTimeout: 120000
+    ConnectTimeout: 10000
     retryableStatusCodes: 404,502
     eureka:
       enabled: true
