@@ -11,8 +11,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/kidocloud/kdc_shop
-          #uri: https://github.com/kidocloud/dev_config
+          #uri: https://github.com/kidocloud/kdc_shop
+          uri: https://github.com/kidocloud/dev_config
           #uri: https://github.com/kidocloud/config_cloud     
 management:
   endpoints:
